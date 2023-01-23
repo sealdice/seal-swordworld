@@ -19,18 +19,27 @@ loader.dynamicLoad('SwordWorld2.5').then((GameSystem) => {
   return;
 })
 
+const replaceMap = {
+  '＞': '>',
+  '<': '<',
+  '，': ','
+};
+
+const strReplaceAll = function (s, s1, s2: string) {
+  return s.replace(new RegExp(s1, "gm"), s2);
+}
+
 const register = () => {
   let ext = seal.ext.find('sw');
   if (!ext) {
     ext = seal.ext.new('sw', '木落', '1.0.0');
     seal.ext.register(ext);
   }
-  
+
   const cmdSW = seal.ext.newCmdItemInfo();
   cmdSW.name = 'sw';
   cmdSW.help = '剑世界骰点，格式为 .sw <式子>，以下说明为系统原文:\n\n' + curSys.HELP_MESSAGE;
-  
-  
+
   cmdSW.solve = (ctx, msg, cmdArgs) => {
     let val = cmdArgs.getArgN(1);
     switch (val) {
@@ -40,16 +49,19 @@ const register = () => {
         ret.showHelp = true;
         return ret;
       }
-  
+
       case 'ver':
       case 'version': {
         seal.replyToSender(ctx, msg, `BCDice Version ${Version}`);
         break;
       }
-  
+
       default: {
         let lastText = '';
         val = cmdArgs.cleanArgs;
+        for (let [k, v] of Object.entries(replaceMap)) {
+          val = strReplaceAll(val, k, v);
+        }
         if (val) {
           try {
             const pairs = bracketParse(val);
@@ -71,12 +83,13 @@ const register = () => {
         if (ret) {
           seal.replyToSender(ctx, msg, ret.text);
         } else {
-          seal.replyToSender(ctx, msg, '执行失败，未得到任何返回');
+          // 注: ret 好像总是空的
+          seal.replyToSender(ctx, msg, '执行失败，请检查你的式子');
         }
       }
     }
     return seal.ext.newCmdExecuteResult(true);
   }
-  
+
   ext.cmdMap['sw'] = cmdSW;
 }
