@@ -1,0 +1,10 @@
+// ==UserScript==
+// @name         SwordWorld2.5
+// @author       木落
+// @version      1.0.0
+// @description  在海豹中使用剑世界2.5规则，请使用.sw help查看指令说明。大概需要10MB内存
+// @timestamp    1674477074
+// 2023/1/23
+// @license      MIT
+// @homepageURL  https://github.com/sealdice/seal-swordworld
+// ==/UserScript==
