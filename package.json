@@ -15,7 +15,7 @@
     "node": ">=10"
   },
   "dependencies": {
-    "bcdice": "^4.0.3",
+    "bcdice": "^4.1.0",
     "esbuild": "^0.17.4"
   },
   "devDependencies": {

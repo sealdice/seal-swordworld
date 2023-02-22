@@ -1,6 +1,6 @@
 import { Version } from 'bcdice';
 import './bcdi18n'
-import 'bcdice/lib/bcdice/game_system/SwordWorld2_5';
+import 'bcdice/lib/bcdice/game_system/SwordWorld2_5_SimplifiedChinese';
 import StaticLoader from './bcd-loader'
 import { bracketParse } from './bracket-parser';
 import GameSystemClass from 'bcdice/lib/game_system';
@@ -11,7 +11,7 @@ import GameSystemClass from 'bcdice/lib/game_system';
 let curSys: GameSystemClass = undefined;
 
 const loader = new StaticLoader();
-loader.dynamicLoad('SwordWorld2.5').then((GameSystem) => {
+loader.dynamicLoad('SwordWorld2.5:SimplifiedChinese').then((GameSystem) => {
   curSys = GameSystem;
   register();
 }).catch(e => {
@@ -32,7 +32,7 @@ const strReplaceAll = function (s, s1, s2: string) {
 const register = () => {
   let ext = seal.ext.find('sw');
   if (!ext) {
-    ext = seal.ext.new('sw', '木落', '1.0.0');
+    ext = seal.ext.new('sw', '木落', '1.1.0');
     seal.ext.register(ext);
   }
 

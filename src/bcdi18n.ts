@@ -8,6 +8,15 @@ I18n.$load_translation(JSON.stringify(i18n39));
 import i18n40 from 'bcdice/lib/bcdice/i18n/SwordWorld2_5.ja_jp.json'
 I18n.$load_translation(JSON.stringify(i18n40));
 
+import i18n401 from 'bcdice/lib/bcdice/i18n/SwordWorld.zh_hans.json'
+I18n.$load_translation(JSON.stringify(i18n401));
+
+import i18n402 from 'bcdice/lib/bcdice/i18n/SwordWorld2_0.zh_hans.json'
+I18n.$load_translation(JSON.stringify(i18n402));
+
+import i18n403 from 'bcdice/lib/bcdice/i18n/SwordWorld2_5.zh_hans.json'
+I18n.$load_translation(JSON.stringify(i18n403));
+
 
 // 此文件由以下代码自动生成:
 // let i18nCount = 1
